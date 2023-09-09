@@ -7,6 +7,7 @@ import Details from './components/blog/Details'
 import Update from './components/blog/update'
 
 import Signup from './components/auth/Signup'
+import Login from './components/auth/Login'
 
 function App() {
 
@@ -19,6 +20,7 @@ function App() {
           <Route path='update/:blogId' element={<Update />} />
 
           <Route path='signup' element={<Signup />} />
+          <Route path='login' element={<Login />} />
         </Route>
     </Routes>
   )
