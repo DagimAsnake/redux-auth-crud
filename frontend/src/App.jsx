@@ -6,6 +6,8 @@ import Create from "./components/blog/Create"
 import Details from './components/blog/Details'
 import Update from './components/blog/update'
 
+import Signup from './components/auth/Signup'
+
 function App() {
 
   return (
@@ -15,6 +17,8 @@ function App() {
           <Route path='create' element={<Create />} />
           <Route path='blog/:blogId' element={<Details />} />
           <Route path='update/:blogId' element={<Update />} />
+
+          <Route path='signup' element={<Signup />} />
         </Route>
     </Routes>
   )

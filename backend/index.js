@@ -32,6 +32,7 @@ app.use(cors());
 
 
 const blogRouter = require('./route/blog')
-
+const authRouter = require('./route/auth')
 
 app.use('/blog', blogRouter)
+app.use('/auth', authRouter)
