@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { blogActions } from '../store/BlogSlice';
+import { addBlog } from '../store/BlogSlice';
 import { useNavigate } from "react-router-dom";
 
 const Create = () => {
@@ -14,7 +14,7 @@ const Create = () => {
 
   const onFormSubmission = (e) => {
     e.preventDefault();
-    dispatch(blogActions.addBlog(formData));
+    dispatch(addBlog(formData));
     fetch('http://localhost:8000/blog/add', {
       method: 'POST',
       headers: {
