@@ -78,3 +78,27 @@ module.exports.addBlog = async function (req, res) {
       return res.status(500).json({ error: 'Server error' });
     }
   };
+
+  module.exports.updateBlog = async function (req, res) {
+    const { blogId } = req.params;
+    const data = req.body;
+
+    const updatedData = {
+      title: data.title,
+      topic: data.topic,
+      description: data.description,
+    };
+  
+    try {
+      const blog = await Blog.findById(blogId);
+      if (!blog) {
+        return res.status(404).json({ msg: 'Blog not found' });
+      }
+  
+      await Blog.findByIdAndUpdate(blogId, updatedData);
+      return res.status(200).json({ msg: 'Blog updated successfully' });
+    } catch (error) {
+      console.error('Error updating blog:', error);
+      return res.status(500).json({ error: 'Server error' });
+    }
+  };

@@ -24,9 +24,18 @@ const blogSlice = createSlice({
           state.selectedBlog = null;
         }
       },
+    updateBlog(state, action) {
+        const { id, title, topic, description } = action.payload;
+        const editBlog = state.blogs.find(blog => blog._id === id);
+        if (editBlog) {
+          editBlog.title = title;
+          editBlog.topic = topic;
+          editBlog.description = description;
+        }
+      }
   },
 });
 
-export const { addBlog, getAllBlog, getOneBlog, deleteBlog } = blogSlice.actions;
+export const { addBlog, getAllBlog, getOneBlog, deleteBlog, updateBlog } = blogSlice.actions;
 
 export default blogSlice.reducer;

@@ -15,7 +15,6 @@ const Details = () => {
         fetch(`http://localhost:8000/blog/${blogId}`)
           .then((response) => response.json())
           .then((data) => {
-            console.log(data)
             dispatch(getOneBlog(data.blog));
           })
           .catch((error) => {
@@ -31,7 +30,7 @@ const Details = () => {
             dispatch(deleteBlog(blogState?._id))
             navigate('/'); 
         } else {
-            throw new Error('Failed to delete blog'); // Handle the error case
+            throw new Error('Failed to delete blog'); 
         }
         }).catch((error) => {
         console.error(error);
@@ -61,7 +60,7 @@ const Details = () => {
             </div>
 
             <div className="px-6 py-4 flex justify-end"> 
-                <Link to={`/editblog/${blogState?._id}`}>
+                <Link to={`/update/${blogState?._id}`}>
                     <button className="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-l">
                         <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
                         <path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z" />
