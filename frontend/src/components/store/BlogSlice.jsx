@@ -17,9 +17,16 @@ const blogSlice = createSlice({
     getOneBlog(state, action) {
       state.selectedBlog = action.payload;
     },
+    deleteBlog(state, action) {
+        const blogId = action.payload;
+        state.blogs = state.blogs.filter((blog) => blog.id !== blogId);
+        if (state.selectedBlog && state.selectedBlog.id === blogId) {
+          state.selectedBlog = null;
+        }
+      },
   },
 });
 
-export const { addBlog, getAllBlog, getOneBlog } = blogSlice.actions;
+export const { addBlog, getAllBlog, getOneBlog, deleteBlog } = blogSlice.actions;
 
 export default blogSlice.reducer;

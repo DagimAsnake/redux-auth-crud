@@ -1,6 +1,6 @@
 import moment from 'moment';
 import { Link } from 'react-router-dom';
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getAllBlog } from '../store/BlogSlice';
 
