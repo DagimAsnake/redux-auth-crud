@@ -1,7 +1,6 @@
 const Blog = require("../model/blog")
 
 module.exports.addBlog = async function (req, res) {
-  
       const data = req.body;
       if (!(data.title && data.topic && data.description)) {
           return res.json({
@@ -46,3 +45,20 @@ module.exports.addBlog = async function (req, res) {
       });
     }
   }
+
+  module.exports.getOneBlog = async function (req, res) {
+    const { blogId } = req.params;
+    const one_blog = await Blog.findById(blogId);
+    if (!one_blog) {
+      return res
+        .json({
+          msg: "Id dont exist",
+        })
+        .status(403);
+    }
+    return res
+      .json({
+        blog: one_blog,  
+      })
+      .status(200);
+  };

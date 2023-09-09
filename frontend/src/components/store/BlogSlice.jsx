@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-const initialBlogState = { blogs: [] };
+const initialBlogState = { blogs: [], selectedBlog: null };
 
 const blogSlice = createSlice({
   name: 'blog',
@@ -14,9 +14,12 @@ const blogSlice = createSlice({
     getAllBlog(state, action) {
       state.blogs = action.payload;
     },
+    getOneBlog(state, action) {
+      state.selectedBlog = action.payload;
+    },
   },
 });
 
-export const { addBlog, getAllBlog } = blogSlice.actions;
+export const { addBlog, getAllBlog, getOneBlog } = blogSlice.actions;
 
 export default blogSlice.reducer;
